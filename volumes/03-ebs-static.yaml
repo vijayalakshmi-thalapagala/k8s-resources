@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: test-pv 
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity: 
+    storage:
+  csi:
+    driver: ebs.csi.aws.com 
+    fsType: ext4
+    volumeHandle: vol-02874683b0b8f837b
