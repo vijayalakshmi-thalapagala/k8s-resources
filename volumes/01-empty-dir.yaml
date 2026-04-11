@@ -1,19 +1,22 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: test-pod
+  name: test-pd
 spec:
   containers:
-  - image: registry.k8s.io/test-webserver
-    name: test-container
+  - image: nginx
+    name: nginx
     volumeMounts:
     - mountPath: /var/log/nginx
       name: nginx-logs
   - image: almalinux:9
     name: almalinux
+    command: ["sleep", "2000"]
     volumeMounts:
-    - mountPath: /var/log/nginx
+    - mountPath: /mnt/nginx-logs
       name: nginx-logs
+      readOnly: true
+  # This is at the pod level
   volumes:
   - name: nginx-logs
     emptyDir:
