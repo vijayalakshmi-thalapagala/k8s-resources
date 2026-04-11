@@ -31,7 +31,7 @@ metadata:
   name: app
 spec:
   containers:
-    name: nginx
+  - name: nginx
     image: nginx
     volumeMounts:
     - name: html-data
